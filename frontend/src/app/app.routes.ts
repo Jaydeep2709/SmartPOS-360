@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import {Login} from './features/auth/login/login'
 import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { Dashboard } from './features/dashboard/dashboard/dashboard';
+import { VerticalLayout } from './layouts/main-layout/vertical-layout/vertical-layout';
 export const routes: Routes = [
 
  {
@@ -23,9 +24,15 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'dashboard',
-    component: Dashboard,
-
+    path: '',
+    component: VerticalLayout,
+    children: [
+      {
+        path: 'dashboard',
+        component: Dashboard
+      }
+    ]
   }
+
 
 ];
