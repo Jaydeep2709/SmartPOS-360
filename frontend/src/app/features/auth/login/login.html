@@ -1,64 +1,134 @@
-<div class="login-card" appHighlight>
+<div class="login-container">
 
-  <h1>Login</h1>
+  <mat-card
+    class="login-card"
+    appHighlight
+  >
 
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h1>Login</h1>
 
-    <div class="form-group">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
 
-      <label>Email</label>
+      <!-- EMAIL -->
 
-      <input
-        type="email"
-        formControlName="email"
-        placeholder="Enter email"
-      />
+      <mat-form-field
+        appearance="outline"
+        class="full-width"
+      >
 
-      @if (loginForm.get('email')?.touched &&
-      loginForm.get('email')?.invalid) {
+        <mat-label>Email</mat-label>
 
-        <small>Email is required</small>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="Enter email"
+        />
 
-      }
+        <mat-icon matSuffix>
+          email
+        </mat-icon>
 
-    </div>
+        <mat-error
+          *ngIf="
+            loginForm.get('email')
+            ?.hasError('required')
+          "
+        >
+          Email is required
+        </mat-error>
 
-    <div class="form-group">
+        <mat-error
+          *ngIf="
+            loginForm.get('email')
+            ?.hasError('email')
+          "
+        >
+          Invalid email format
+        </mat-error>
 
-      <label>Password</label>
+      </mat-form-field>
 
-      <input
-        type="password"
-        formControlName="password"
-        placeholder="Enter password"
-      />
+      <!-- PASSWORD -->
 
-      @if (loginForm.get('password')?.touched &&
-      loginForm.get('password')?.invalid) {
+      <mat-form-field
+        appearance="outline"
+        class="full-width"
+      >
 
-        <small>Password is required</small>
+        <mat-label>Password</mat-label>
 
-      }
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Enter password"
+        />
 
-    </div>
+        <mat-icon matSuffix>
+          lock
+        </mat-icon>
 
-    <button type="submit" [appHighlight]="'#19d22c'">
-      Login
-    </button>
-<label class="remember-me-label">
-    <span id="remember-me">Remember Me</span>
-  <input
-    id="remember-me-input"
-    type="checkbox"
-    [(ngModel)]="rememberMe"
-    [ngModelOptions]="{ standalone: true }"
-    name="rememberMe"
-  />
+        <mat-error
+          *ngIf="
+            loginForm.get('password')
+            ?.hasError('required')
+          "
+        >
+          Password is required
+        </mat-error>
 
-  
-</label>
+        <mat-error
+          *ngIf="
+            loginForm.get('password')
+            ?.errors?.['passwordStrength']
+          "
+        >
+          Must contain uppercase,
+          number & special character
+        </mat-error>
 
+      </mat-form-field>
 
-  </form>
+      <!-- REMEMBER ME -->
+
+      <mat-checkbox
+
+        [(ngModel)]="rememberMe"
+
+        [ngModelOptions]="{
+          standalone: true
+        }"
+
+        name="rememberMe"
+
+      >
+        Remember Me
+      </mat-checkbox>
+
+      <!-- BUTTON -->
+
+      <button
+
+        mat-raised-button
+
+        color="primary"
+
+        type="submit"
+
+        class="full-width"
+
+      >
+
+        Login
+
+      </button>
+
+    </form>
+
+  </mat-card>
 
 </div>
