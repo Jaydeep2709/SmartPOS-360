@@ -1,8 +1,11 @@
 import { Routes } from '@angular/router';
 import {Login} from './features/auth/login/login'
 import { AuthLayout } from './layouts/auth-layout/auth-layout';
-import { Dashboard } from './features/dashboard/dashboard/dashboard';
 import { VerticalLayout } from './layouts/main-layout/vertical-layout/vertical-layout';
+import { ProductList } from './features/dashboard/components/product-list/product-list';
+import { loginGuard } from './core/guards/login-guard';
+import { authGuard } from './core/guards/auth-guard';
+
 export const routes: Routes = [
 
  {
@@ -18,7 +21,9 @@ export const routes: Routes = [
 
       {
         path: 'login',
-        component: Login
+        component: Login,
+        canActivate: [loginGuard]
+
       }
 
     ],
@@ -29,7 +34,18 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: Dashboard
+         canActivate: [authGuard],
+        // component: Dashboard
+        loadComponent: () =>
+
+          import(
+            './features/dashboard/dashboard'
+          ).then(m => m.Dashboard)
+      },
+      {
+        path: 'productList',
+        canActivate: [authGuard],
+        component: ProductList
       }
     ]
   }
