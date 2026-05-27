@@ -1,35 +1,82 @@
-<div class="sidebar">
-
+<div
+  class="sidebar"
+  [class.closed]="!isOpen"
+>
   <div class="logo">
-    <h2>SmartPOS360</h2>
+
+    @if (isOpen) {
+      <h2>SmartPOS360</h2>
+    }
+
   </div>
 
   <nav>
 
-    <a routerLink="/dashboard" routerLinkActive="active">
-      Dashboard
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+    >
+      <span class="icon">📊</span>
+
+      @if (isOpen) {
+        <span>Dashboard</span>
+      }
+    </a>
+<a
+      routerLink="/productList"
+      routerLinkActive="active"
+    >
+      <span class="icon">📦</span>
+
+      @if (isOpen) {
+        <span>Inventory</span>
+      }
+    </a>
+    <a
+      routerLink="/pos"
+      routerLinkActive="active"
+    >
+      <span class="icon">🛒</span>
+
+      @if (isOpen) {
+        <span>POS</span>
+      }
     </a>
 
-    <a routerLink="/pos" routerLinkActive="active">
-      POS
+    
+
+    <a
+      routerLink="/customers"
+      routerLinkActive="active"
+    >
+      <span class="icon">👥</span>
+
+      @if (isOpen) {
+        <span>Customers</span>
+      }
     </a>
 
-    <a routerLink="/inventory" routerLinkActive="active">
-      Inventory
+    <a
+      routerLink="/reports"
+      routerLinkActive="active"
+    >
+      <span class="icon">📈</span>
+
+      @if (isOpen) {
+        <span>Reports</span>
+      }
     </a>
 
-    <a routerLink="/customers" routerLinkActive="active">
-      Customers
-    </a>
+    <a
+      routerLink="/settings"
+      routerLinkActive="active"
+    >
+      <span class="icon">⚙️</span>
 
-    <a routerLink="/reports" routerLinkActive="active">
-      Reports
-    </a>
-
-    <a routerLink="/settings" routerLinkActive="active">
-      Settings
+      @if (isOpen) {
+        <span>Settings</span>
+      }
     </a>
 
   </nav>
-
 </div>

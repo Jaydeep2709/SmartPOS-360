@@ -2,7 +2,7 @@
 
   <div class="left-section">
 
-    <button class="menu-btn">
+    <button class="menu-btn" (click)="toggleSidebar()">
       ☰
     </button>
 
@@ -21,13 +21,13 @@
 
     <button>🌐</button>
 
-    <button>🌙</button>
+    <button (click)="toggleTheme()">🌙</button>
 
     <div class="profile">
 
       <span>Admin</span>
 
-      <button>Logout</button>
+      <button (click) = "logout()">Logout</button>
 
     </div>
 
