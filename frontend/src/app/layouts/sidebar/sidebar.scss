@@ -1,42 +1,56 @@
+
+
+@use '../../../style/tokens' as t;
+
 .sidebar {
-  width: 250px;
-  height: 100vh;
-  background: #1976d2;
+  width: t.$sidebar-width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  background: t.$primary;
   color: white;
 
-  display: flex;
-  flex-direction: column;
+  transition: width 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar.closed {
+  width: 80px;
+}
+
+.icon {
+  font-size: 25px;
 }
 
 .logo {
-  padding: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-}
-
-.logo h2 {
-  margin: 0;
+  padding: t.$spacing-lg;
 }
 
 nav {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: t.$spacing-sm;
 }
 
 nav a {
+  display: flex;
+  align-items: center;
+  gap: t.$spacing-md;
+
   color: white;
   text-decoration: none;
-  padding: 12px 15px;
-  border-radius: 6px;
+
+  padding: 14px;
+  border-radius: 8px;
   margin-bottom: 5px;
 
   transition: 0.3s;
 }
 
+
+
 nav a:hover {
   background: rgba(255,255,255,0.2);
-}
-
-.active {
-  background: rgba(255,255,255,0.3);
 }

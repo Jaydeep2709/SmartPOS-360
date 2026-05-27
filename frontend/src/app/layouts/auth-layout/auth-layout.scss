@@ -1,15 +1,15 @@
+@use '../../../style/tokens' as t;
+@use '../../../style/mixins' as m;
+
 .auth-layout {
+  @include m.full-screen;
   display: flex;
-  height: 100vh;
-  width: 100%;
 }
 
 .left-panel {
   flex: 1;
-  background: linear-gradient(135deg, #1976d2, #0d47a1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(135deg, t.$primary, t.$primary-dark);
+  @include m.center-flex;
   color: white;
 }
 
@@ -30,10 +30,8 @@
 
 .right-panel {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f5f7fb;
+  @include m.center-flex;
+  background: t.$background-light;
 }
 
 @media(max-width: 900px) {

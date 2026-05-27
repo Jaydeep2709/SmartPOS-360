@@ -1,0 +1,41 @@
+
+
+@use '../../../style/tokens' as t;
+
+
+.stats-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: t.$spacing-lg;
+}
+
+
+
+/* Main dashboard wrapper */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: t.$spacing-lg;
+  padding: t.$spacing-lg;
+  min-height: 100vh;
+}
+
+
+/* Section wrapper (optional reuse) */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: t.$spacing-md;
+}
+
+/* Card style (if dashboard uses custom cards) */
+.card {
+  background: white;
+  border-radius: t.$radius-md;
+  box-shadow: t.$shadow-md;
+  padding: t.$spacing-md;
+}

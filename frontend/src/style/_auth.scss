@@ -1,0 +1,16 @@
+@use './mixins' as m;
+@use './tokens' as t;
+
+.auth-container {
+  @include m.full-screen;
+  @include m.center-flex;
+  background: t.$background-light;
+}
+
+.auth-card {
+  width: 400px;
+  padding: 30px;
+  background: t.$background-card;
+  border-radius: t.$radius-md;
+  box-shadow: t.$shadow-md;
+}
