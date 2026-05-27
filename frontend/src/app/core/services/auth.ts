@@ -51,3 +51,65 @@ export class Auth {
   }
 
 }
+
+
+// import { Injectable } from '@angular/core';
+// import { Router } from '@angular/router';
+// import { HttpClient } from '@angular/common/http';
+// import { tap } from 'rxjs/operators';
+
+// @Injectable({
+//   providedIn: 'root',
+// })
+// export class Auth {
+
+//   private apiUrl = 'https://reqres.in/api/login';
+
+//   constructor(
+//     private router: Router,
+//     private http: HttpClient
+//   ) {}
+
+//   login(username: string, password: string, rememberMe: boolean) {
+
+//     return this.http.post<any>(this.apiUrl, {
+//       username,
+//       password
+//     }).pipe(
+//       tap((res) => {
+
+//         // ✅ store token
+//         localStorage.setItem('token', res.token);
+
+//         localStorage.setItem('isLoggedIn', 'true');
+
+//         if (rememberMe) {
+//           localStorage.setItem('rememberedUser', username);
+//         } else {
+//           localStorage.removeItem('rememberedUser');
+//         }
+//       })
+//     );
+//   }
+
+//   logout() {
+
+//     localStorage.removeItem('token');
+//     localStorage.removeItem('isLoggedIn');
+//     localStorage.removeItem('currentUser');
+
+//     this.router.navigate(['/login']);
+//   }
+
+//   getRememberedUser(): string {
+//     return localStorage.getItem('rememberedUser') || '';
+//   }
+
+//   isLoggedIn(): boolean {
+//     return localStorage.getItem('isLoggedIn') === 'true';
+//   }
+
+//   getToken(): string | null {
+//     return localStorage.getItem('token');
+//   }
+// }

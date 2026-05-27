@@ -1,4 +1,4 @@
-<div class="layout">
+<div class="layout"     [class.collapsed]="!(sidebarOpen$ | async)">
 
   <app-sidebar></app-sidebar>
 
@@ -7,9 +7,7 @@
     <app-header></app-header>
 
     <div class="page-content">
-
       <router-outlet></router-outlet>
-
     </div>
 
     <app-footer></app-footer>
