@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { TranslatePipe } from '@ngx-translate/core';
 import { LayoutService } from '../../core/services/layout.service';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -10,7 +10,8 @@ import { Subject, takeUntil } from 'rxjs';
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    TranslatePipe
   ],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss'

@@ -1,35 +1,34 @@
 <div class="dashboard">
-<h1>SmartPOS360 Dashboard</h1>
+<h1> {{ 'DASHBOARD.TITLE' | translate }}</h1>
   <div class="stats-grid">
 
     <app-stat-card
-      title="Total Sales"
+      [title]= "'DASHBOARD.TOTAL_SALES' | translate"
       value="₹1,25,000"
       icon="💰"
       percentage="+12%"
     />
 
     <app-stat-card
-      title="Orders"
-      value="1,240"
-      icon="🛒"
-      percentage="+8%"
-    />
+  [title]="'DASHBOARD.ORDERS' | translate"
+  value="1,240"
+  icon="🛒"
+  percentage="+8%"
+></app-stat-card>
 
-    <app-stat-card
-      title="Customers"
-      value="845"
-      icon="👥"
-      percentage="+5%"
-    />
+<app-stat-card
+  [title]="'DASHBOARD.CUSTOMERS' | translate"
+  value="845"
+  icon="👥"
+  percentage="+5%"
+></app-stat-card>
 
-    <app-stat-card
-      title="Products"
-      value="320"
-      icon="📦"
-      percentage="+15%"
-    />
-
+<app-stat-card
+  [title]="'DASHBOARD.PRODUCTS' | translate"
+  value="320"
+  icon="📦"
+  percentage="+15%"
+></app-stat-card>
     </div>
     <div class="dashboard-container">
 

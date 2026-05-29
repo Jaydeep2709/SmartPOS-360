@@ -47,3 +47,26 @@ app-header {
   top: 0;
   z-index: 900;
 }
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.language-selector select {
+
+  border: none;
+
+  outline: none;
+
+  padding: 6px 10px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  background: white;
+
+  font-size: 14px;
+}

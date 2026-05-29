@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { StockFilterPipe } from '../../shared/pipes/stock-filter-pipe';
 import { ProductStatusPipe } from '../../shared/pipes/product-status-pipe';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProductStatusPipe } from '../../shared/pipes/product-status-pipe';
     //ProductStatusPipe,
     StockFilterPipe,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    TranslatePipe
   ],
   exports: [
     ProductList

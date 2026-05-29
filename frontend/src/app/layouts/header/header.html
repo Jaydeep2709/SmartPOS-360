@@ -19,7 +19,27 @@
 
     <button>🔔</button>
 
-    <button>🌐</button>
+    <div class="language-selector">
+
+  <span>🌐</span>
+
+  <select (change)="changeLanguage($event)">
+
+    <option value="en">
+      English
+    </option>
+
+    <option value="es">
+      Spanish
+    </option>
+
+    <option value="fr">
+      French
+    </option>
+
+  </select>
+
+</div>
 
     <button (click)="toggleTheme()">🌙</button>
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponentsModule } from './dashboard.module';
 import { StatCard }
 from './components/stat-card/stat-card';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,8 @@ from './components/stat-card/stat-card';
   imports: [
     CommonModule,
     StatCard,
-    DashboardComponentsModule
+    DashboardComponentsModule,
+    TranslatePipe
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'

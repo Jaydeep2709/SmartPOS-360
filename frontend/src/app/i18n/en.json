@@ -1,0 +1,58 @@
+{
+  "AUTH": {
+    "LOGIN": "Login",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "ENTER_EMAIL": "Enter email",
+    "ENTER_PASSWORD": "Enter password",
+    "REMEMBER_ME": "Remember Me",
+    "EMAIL_REQUIRED": "Email is required",
+    "INVALID_EMAIL": "Invalid email format",
+    "PASSWORD_REQUIRED": "Password is required",
+    "PASSWORD_STRENGTH": "Must contain uppercase, number & special character"
+  },
+
+  "DASHBOARD": {
+    "TITLE": "SmartPOS360 Dashboard",
+    "TOTAL_SALES": "Total Sales",
+    "ORDERS": "Orders",
+    "CUSTOMERS": "Customers",
+    "PRODUCTS": "Products",
+    "SINCE_LAST_MONTH": "since last month"
+  },
+
+  "PRODUCT": {
+    "PRODUCTS": "Products",
+    "ALL": "All",
+    "MENS_CLOTHING": "Men's Clothing",
+    "WOMENS_CLOTHING": "Women's Clothing",
+    "ELECTRONICS": "Electronics",
+    "JEWELERY": "Jewelery",
+    "PRICE": "Price",
+    "CATEGORY": "Category",
+    "RATING": "Rating",
+    "DELETE": "Delete",
+    "LOAD_DYNAMIC_CHILD": "Load Dynamic Child",
+    "FEATURED": "Featured",
+    "NO_PRODUCTS": "No products available"
+  },
+
+  "HEADER": {
+    "SEARCH": "Search...",
+    "LOGOUT": "Logout",
+    "ADMIN": "Admin"
+  },
+
+  "SIDEBAR": {
+    "DASHBOARD": "Dashboard",
+    "INVENTORY": "Inventory",
+    "POS": "POS",
+    "CUSTOMERS": "Customers",
+    "REPORTS": "Reports",
+    "SETTINGS": "Settings"
+  },
+
+  "FOOTER": {
+    "COPYRIGHT": "SmartPOS360 © 2026"
+  }
+}

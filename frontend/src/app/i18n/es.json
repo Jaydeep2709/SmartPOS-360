@@ -1,0 +1,58 @@
+{
+  "AUTH": {
+    "LOGIN": "Iniciar sesión",
+    "EMAIL": "Correo electrónico",
+    "PASSWORD": "Contraseña",
+    "ENTER_EMAIL": "Ingrese correo electrónico",
+    "ENTER_PASSWORD": "Ingrese contraseña",
+    "REMEMBER_ME": "Recuérdame",
+    "EMAIL_REQUIRED": "El correo es obligatorio",
+    "INVALID_EMAIL": "Formato de correo inválido",
+    "PASSWORD_REQUIRED": "La contraseña es obligatoria",
+    "PASSWORD_STRENGTH": "Debe contener mayúsculas, número y carácter especial"
+  },
+
+  "DASHBOARD": {
+    "TITLE": "Panel SmartPOS360",
+    "TOTAL_SALES": "Ventas Totales",
+    "ORDERS": "Pedidos",
+    "CUSTOMERS": "Clientes",
+    "PRODUCTS": "Productos",
+    "SINCE_LAST_MONTH": "desde el mes pasado"
+  },
+
+  "PRODUCT": {
+    "PRODUCTS": "Productos",
+    "ALL": "Todos",
+    "MENS_CLOTHING": "Ropa de hombre",
+    "WOMENS_CLOTHING": "Ropa de mujer",
+    "ELECTRONICS": "Electrónica",
+    "JEWELERY": "Joyería",
+    "PRICE": "Precio",
+    "CATEGORY": "Categoría",
+    "RATING": "Calificación",
+    "DELETE": "Eliminar",
+    "LOAD_DYNAMIC_CHILD": "Cargar componente dinámico",
+    "FEATURED": "Destacado",
+    "NO_PRODUCTS": "No hay productos disponibles"
+  },
+
+  "HEADER": {
+    "SEARCH": "Buscar...",
+    "LOGOUT": "Cerrar sesión",
+    "ADMIN": "Administrador"
+  },
+
+  "SIDEBAR": {
+    "DASHBOARD": "Panel",
+    "INVENTORY": "Inventario",
+    "POS": "POS",
+    "CUSTOMERS": "Clientes",
+    "REPORTS": "Reportes",
+    "SETTINGS": "Configuraciones"
+  },
+
+  "FOOTER": {
+    "COPYRIGHT": "SmartPOS360 © 2026"
+  }
+}

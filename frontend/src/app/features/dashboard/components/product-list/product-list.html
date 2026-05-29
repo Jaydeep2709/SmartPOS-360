@@ -1,27 +1,27 @@
 
 <div class="header-bar">
-<h2>Products</h2>
+<h2>{{'PRODUCT.PRODUCTS' | translate}}</h2>
 
 <select [(ngModel)]="selectedCategory">
 
   <option value="ALL">
-    All
+  {{'PRODUCT.ALL' | translate}}
   </option>
 
   <option value="men's clothing">
-    Men's Clothing
+    {{'PRODUCT.MENS_CLOTHING' | translate}}
   </option>
 
   <option value="women's clothing">
-    Women's Clothing
+    {{'PRODUCT.WOMENS_CLOTHING' | translate}}
   </option>
 
   <option value="electronics">
-    Electronics
+    {{'PRODUCT.ELECTRONICS' | translate}}
   </option>
 
   <option value="jewelery">
-    Jewelery
+    {{'PRODUCT.JEWELERY' | translate}}
   </option>
 
 </select>
@@ -102,7 +102,7 @@
   <ng-container matColumnDef="category">
 
     <th mat-header-cell *matHeaderCellDef>
-      Category
+      {{'PRODUCT.CATEGORY'| translate}}
     </th>
 
     <td mat-cell *matCellDef="let p">
@@ -115,7 +115,7 @@
   <ng-container matColumnDef="price">
 
     <th mat-header-cell *matHeaderCellDef>
-      Price
+      {{'PRODUCT.PRICE'| translate}}
     </th>
 
     <td mat-cell *matCellDef="let p">
@@ -128,7 +128,7 @@
   <ng-container matColumnDef="rating">
 
     <th mat-header-cell *matHeaderCellDef>
-      Rating
+      {{'PRODUCT.RATING' | translate}}
     </th>
 
     <td mat-cell *matCellDef="let p">
@@ -152,7 +152,7 @@
         mat-button
         color="warn"
       >
-        Delete
+        {{'PRODUCT.DELETE'| translate}}
       </button>
 
     </td>
@@ -175,6 +175,6 @@
 </div>
 <ng-template #noProducts>
 
-  <p>No products available</p>
+  <p>{{'PRODUCT.NO_PRODUCTS' | translate}}/p>
 
 </ng-template>
