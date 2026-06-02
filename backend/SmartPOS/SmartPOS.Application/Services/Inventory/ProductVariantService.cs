@@ -79,8 +79,7 @@ public class ProductVariantService : IProductVariantService
         };
     }
 
-    public async Task<bool> UpdateAsync(
-        UpdateProductVariantDto dto)
+    public async Task<bool> UpdateAsync( UpdateProductVariantDto dto )
     {
         var variant = await _repository.GetByIdAsync(dto.Id);
 

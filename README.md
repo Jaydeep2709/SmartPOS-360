@@ -1,5 +1,97 @@
 # SmartPOS-360
 Billing and inventory system for shops/restaurants.
+
+SMARTPOS-360
+│
+├──Frontend
+│   │
+│   ├──src
+│       ├──app
+│       │   ├──Core
+│       │   │   ├──guards
+│       │   │   │   ├──auth-guard.ts
+│       │   │   │       ├──login-guard.ts
+│       │   │   ├──interceptors
+│       │   │   │   ├──
+│       │   │   │   ├──
+│       │   │   ├──services
+│       │   │   │   ├──auth.service.ts
+│       │   │   │   ├──layout.service.ts
+│       │   │   │   ├──product.service.ts
+│       │   │   │   ├──theme.service.ts
+│       │   │   │   ├──translation.service.ts
+│       │   │
+│       │   ├──features
+│       │   │   ├──auth
+│       │   │   │   ├──forgot-password (html,ts)
+│       │   │   │   ├──login  (html,ts)
+│       │   │   │   ├──register  (html,ts)
+│       │   │   ├──billing
+│       │   │   │   ├──billing (html,ts) 
+│       │   │   │   ├──cart  (html,ts)
+│       │   │   │   ├──invoice  (html,ts)
+│       │   │   │   ├──payment  (html,ts)
+│       │   │   │
+│       │   │   ├──dashboard
+│       │   │   │   ├──Components
+│       │   │   │   │    ├──product-card (html,ts)
+│       │   │   │   │    ├──product-form (html,ts)
+│       │   │   │   │    ├──product-list (html,ts)
+│       │   │   │   │    ├──stat-card    (html,ts)
+│       │   │   │   │
+│       │   │   │   ├──dashboard.module.ts
+│       │   │   │   ├──dashboard (html, ts)
+│       │   │   │
+│       │   │   ├──employees
+│       │   │   ├──inventory
+│       │   │   ├──products
+│       │   │   ├──report
+│
+│
+│
+│
+│
+│
+│
+
+
+
+│       │   ├──i18n
+│       │   ├──Layouts
+│           ├──Shared
+│           ├──Store
+            ├──app.config.ts
+            ├──app.html
+            ├──app.routes.ts
+            ├──app.ts
+
+│       ├──style
+│       ├──main.ts
+│       ├──index.html
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+│
+├──
+
+
+
 SmartPOS.Domain/
 │
 ├── Common/
