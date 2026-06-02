@@ -2,7 +2,6 @@
 using SmartPOS.Domain.Inventory.Entities;
 using SmartPOS.Infrastructure.Data;
 using SmartPOS.Application.Interfaces.Irepositories.Inventory;
-//using SmartPOS.Infrastructure.Persistence;
 
 namespace SmartPOS.Infrastructure.Repositories.Inventory;
 
