@@ -4,6 +4,7 @@ using SmartPOS.Domain.Identity.Entities;
 using SmartPOS.Infrastructure.Data;
 using SmartPOS.Infrastructure;
 using SmartPOS.Application;
+using SmartPOS.Infrastructure.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,8 +28,29 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
-var app = builder.Build();
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy
+                .WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        });
+});
+
+var app = builder.Build();
+app.UseCors("_myAllowSpecificOrigins");
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    await DbSeeder.SeedAdminAsync(services);
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -37,7 +59,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();
