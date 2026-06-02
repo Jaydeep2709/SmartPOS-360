@@ -89,7 +89,7 @@ public class ApplicationDbContext
 
         builder.Entity<PurchaseOrderItem>()
             .HasOne(x => x.PurchaseOrder)
-            .WithMany(x => x.Items)
+            .WithMany(x => x.PurchaseOrderItems)
             .HasForeignKey(x => x.PurchaseOrderId)
             .OnDelete(DeleteBehavior.NoAction);
 
