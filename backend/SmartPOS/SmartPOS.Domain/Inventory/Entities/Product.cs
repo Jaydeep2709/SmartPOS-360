@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartPOS.Domain.Common;
+using SmartPOS.Domain.POS.Entities;
 
 namespace SmartPOS.Domain.Inventory.Entities
 {
@@ -45,8 +46,19 @@ namespace SmartPOS.Domain.Inventory.Entities
 
         public bool IsActive { get; set; } = true;
 
-        public string ProductImageUrl { get; set; }
+        public string? ProductImageUrl { get; set; }
 
         public ICollection<ProductVariant> Variants { get; set; }
+        public ICollection<Stock> Stocks { get; set; }
+       = new List<Stock>();
+
+        public ICollection<InventoryTransaction> InventoryTransactions { get; set; }
+            = new List<InventoryTransaction>();
+
+        public ICollection<PurchaseOrderItem> PurchaseOrderItems { get; set; }
+            = new List<PurchaseOrderItem>();
+
+        public ICollection<SaleItem> SaleItems { get; set; }
+            = new List<SaleItem>();
     }
 }
