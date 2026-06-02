@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartPOS.Domain.Common;
+using SmartPOS.Domain.Inventory.Entities;
 
 namespace SmartPOS.Domain.Store.Entities
 {
@@ -16,5 +17,7 @@ namespace SmartPOS.Domain.Store.Entities
         public string Name { get; set; }
 
         public string Location { get; set; }
+
+        public ICollection<Stock> Stocks { get; set; } = new List<Stock>();
     }
 }

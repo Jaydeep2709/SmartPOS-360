@@ -20,5 +20,8 @@ namespace SmartPOS.Domain.Inventory.Entities
         public string Address { get; set; }
 
         public string GSTNumber { get; set; }
+        public ICollection<Product> Products { get; set; } = new List<Product>();
+
+        public ICollection<PurchaseOrder> PurchaseOrders { get; set; } = new List<PurchaseOrder>();
     }
 }

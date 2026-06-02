@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartPOS.Domain.Common;
+﻿using SmartPOS.Domain.Common;
 
 namespace SmartPOS.Domain.Inventory.Entities
 {
@@ -12,5 +7,7 @@ namespace SmartPOS.Domain.Inventory.Entities
         public string Name { get; set; }
 
         public string ShortName { get; set; }
+
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }
