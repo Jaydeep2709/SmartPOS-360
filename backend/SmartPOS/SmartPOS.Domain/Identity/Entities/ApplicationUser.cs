@@ -13,6 +13,6 @@ namespace SmartPOS.Domain.Identity.Entities
 
     public bool IsActive { get; set; } = true;
 
-    public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
+    public ICollection<RefreshToken> RefreshToken { get; set; } = new List<RefreshToken>();
     }
 }

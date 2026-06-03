@@ -2,11 +2,14 @@
 using SmartPOS.Application.DTOs.Inventory.Category;
 using SmartPOS.Application.Interfaces.Irepositories.Inventory;
 using SmartPOS.Application.Interfaces.Iservices.Inventory;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace SmartPOS.API.Controllers.Inventory;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class CategoriesController : ControllerBase
 {
     private readonly ICategoryService _service;

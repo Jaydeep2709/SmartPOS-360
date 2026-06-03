@@ -7,7 +7,7 @@ namespace SmartPOS.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-//[Authorize]
+[Authorize]
 public class SuppliersController : ControllerBase
 {
     private readonly ISupplierService _service;

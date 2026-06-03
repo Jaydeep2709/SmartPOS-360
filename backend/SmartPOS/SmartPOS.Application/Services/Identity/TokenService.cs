@@ -57,7 +57,7 @@ public class TokenService : ITokenService
     }
     public Task<bool> ValidateRefreshTokenAsync(ApplicationUser user, string refreshToken) 
     { 
-        var token = user.RefreshTokens.FirstOrDefault(x => x.Token == refreshToken && !x.IsRevoked && x.ExpiryDate > DateTime.UtcNow); 
+        var token = user.RefreshToken.FirstOrDefault(x => x.Token == refreshToken && !x.IsRevoked && x.ExpiryDate > DateTime.UtcNow); 
         return Task.FromResult(token != null); 
     } 
 }

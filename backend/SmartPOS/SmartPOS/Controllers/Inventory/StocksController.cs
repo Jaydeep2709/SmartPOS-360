@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmartPOS.Application.DTOs.Inventory.Stock;
 using SmartPOS.Application.Interfaces.Iservices.Inventory;
 
@@ -6,6 +7,7 @@ namespace SmartPOS.API.Controllers.Inventory
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class StocksController : ControllerBase
     {
         private readonly IStockService _service;

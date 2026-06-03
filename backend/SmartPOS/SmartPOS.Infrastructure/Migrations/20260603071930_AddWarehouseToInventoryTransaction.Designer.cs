@@ -12,8 +12,8 @@ using SmartPOS.Infrastructure.Data;
 namespace SmartPOS.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260529052044_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260603071930_AddWarehouseToInventoryTransaction")]
+    partial class AddWarehouseToInventoryTransaction
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -377,9 +377,14 @@ namespace SmartPOS.Infrastructure.Migrations
                     b.Property<Guid>("Updatedby")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("WarehouseId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("WarehouseId");
 
                     b.ToTable("InventoryTransactions");
                 });
@@ -427,7 +432,6 @@ namespace SmartPOS.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ReorderLevel")
@@ -1385,18 +1389,26 @@ namespace SmartPOS.Infrastructure.Migrations
             modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.InventoryTransaction", b =>
                 {
                     b.HasOne("SmartPOS.Domain.Inventory.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("InventoryTransactions")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SmartPOS.Domain.Store.Entities.Warehouse", "Warehouse")
+                        .WithMany()
+                        .HasForeignKey("WarehouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Product");
+
+                    b.Navigation("Warehouse");
                 });
 
             modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.Product", b =>
                 {
                     b.HasOne("SmartPOS.Domain.Inventory.Entities.Brand", "Brand")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1408,13 +1420,13 @@ namespace SmartPOS.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("SmartPOS.Domain.Inventory.Entities.Supplier", "Supplier")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SmartPOS.Domain.Inventory.Entities.Unit", "Unit")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("UnitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1442,7 +1454,7 @@ namespace SmartPOS.Infrastructure.Migrations
             modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.PurchaseOrder", b =>
                 {
                     b.HasOne("SmartPOS.Domain.Inventory.Entities.Supplier", "Supplier")
-                        .WithMany()
+                        .WithMany("PurchaseOrders")
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1453,13 +1465,13 @@ namespace SmartPOS.Infrastructure.Migrations
             modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.PurchaseOrderItem", b =>
                 {
                     b.HasOne("SmartPOS.Domain.Inventory.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("PurchaseOrderItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SmartPOS.Domain.Inventory.Entities.PurchaseOrder", "PurchaseOrder")
-                        .WithMany("Items")
+                        .WithMany("PurchaseOrderItems")
                         .HasForeignKey("PurchaseOrderId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -1472,13 +1484,13 @@ namespace SmartPOS.Infrastructure.Migrations
             modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.Stock", b =>
                 {
                     b.HasOne("SmartPOS.Domain.Inventory.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("Stocks")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SmartPOS.Domain.Store.Entities.Warehouse", "Warehouse")
-                        .WithMany()
+                        .WithMany("Stocks")
                         .HasForeignKey("WarehouseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1521,7 +1533,7 @@ namespace SmartPOS.Infrastructure.Migrations
             modelBuilder.Entity("SmartPOS.Domain.POS.Entities.SaleItem", b =>
                 {
                     b.HasOne("SmartPOS.Domain.Inventory.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("SaleItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1564,6 +1576,11 @@ namespace SmartPOS.Infrastructure.Migrations
                     b.Navigation("RefreshToken");
                 });
 
+            modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.Brand", b =>
+                {
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.Category", b =>
                 {
                     b.Navigation("Products");
@@ -1571,12 +1588,32 @@ namespace SmartPOS.Infrastructure.Migrations
 
             modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.Product", b =>
                 {
+                    b.Navigation("InventoryTransactions");
+
+                    b.Navigation("PurchaseOrderItems");
+
+                    b.Navigation("SaleItems");
+
+                    b.Navigation("Stocks");
+
                     b.Navigation("Variants");
                 });
 
             modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.PurchaseOrder", b =>
                 {
-                    b.Navigation("Items");
+                    b.Navigation("PurchaseOrderItems");
+                });
+
+            modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.Supplier", b =>
+                {
+                    b.Navigation("Products");
+
+                    b.Navigation("PurchaseOrders");
+                });
+
+            modelBuilder.Entity("SmartPOS.Domain.Inventory.Entities.Unit", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("SmartPOS.Domain.POS.Entities.Customer", b =>
@@ -1599,6 +1636,11 @@ namespace SmartPOS.Infrastructure.Migrations
             modelBuilder.Entity("SmartPOS.Domain.Store.Entities.Store", b =>
                 {
                     b.Navigation("Branches");
+                });
+
+            modelBuilder.Entity("SmartPOS.Domain.Store.Entities.Warehouse", b =>
+                {
+                    b.Navigation("Stocks");
                 });
 #pragma warning restore 612, 618
         }

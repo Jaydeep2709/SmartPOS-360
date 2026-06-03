@@ -7,7 +7,7 @@ namespace SmartPOS.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-//[Authorize]
+[Authorize]
 public class BrandsController : ControllerBase
 {
     private readonly IBrandService _service;

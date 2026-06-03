@@ -7,7 +7,7 @@ namespace SmartPOS.API.Controllers.Inventory
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class ProductVariantsController : ControllerBase
     {
         private readonly IProductVariantService _service;

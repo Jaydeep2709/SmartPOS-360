@@ -71,6 +71,8 @@ public class ApplicationDbContext
 
     public DbSet<ThemeSetting> ThemeSettings { get; set; }
 
+    public DbSet<RefreshToken> RefreshToken { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -92,6 +94,11 @@ public class ApplicationDbContext
             .WithMany(x => x.PurchaseOrderItems)
             .HasForeignKey(x => x.PurchaseOrderId)
             .OnDelete(DeleteBehavior.NoAction);
+
+        builder.Entity<InventoryTransaction>()
+    .HasOne(x => x.Warehouse)
+    .WithMany()
+    .HasForeignKey(x => x.WarehouseId);
 
     }
 }

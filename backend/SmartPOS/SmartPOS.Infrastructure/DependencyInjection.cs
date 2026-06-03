@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SmartPOS.Application.Interfaces.Irepositories.Inventory;
 using SmartPOS.Application.Interfaces.Irepositories.Store;
+using SmartPOS.Application.Interfaces.IRepositories.Identity;
 using SmartPOS.Application.Interfaces.IRepositories.Inventory;
 using SmartPOS.Application.Interfaces.Iservices.Identity;
 using SmartPOS.Application.Services.Identity;
+using SmartPOS.Infrastructure.Repositories.Identity;
 using SmartPOS.Infrastructure.Repositories.Inventory;
 using SmartPOS.Infrastructure.Repositories.Store;
 using SmartPOS.Infrastructure.Services.Identity;
@@ -21,6 +23,7 @@ public static class DependencyInjection
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IRoleService, RoleService>();
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         #endregion
 
         //Inventory
