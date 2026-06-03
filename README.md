@@ -2,6 +2,7 @@
 Billing and inventory system for shops/restaurants
 
 
+```text
 
 SMARTPOS-360
 │
@@ -498,3 +499,6 @@ Backend
 └── Tests
     ├── UnitTests
     ├── IntegrationTests
+
+
+    ```
