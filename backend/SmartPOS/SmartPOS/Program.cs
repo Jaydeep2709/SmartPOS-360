@@ -4,15 +4,45 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SmartPOS.Application;
+using SmartPOS.Application.Mappings;
 using SmartPOS.Domain.Identity.Entities;
 using SmartPOS.Infrastructure;
 using SmartPOS.Infrastructure.Data;
 using SmartPOS.Infrastructure.Seed;
 using System.Text;
+using SmartPOS.Application.Mappings;
+using MediatR;
+using SmartPOS.Application.Features.Categories.Commands.CreateCategory;
+using Serilog;
+using SmartPOS.API.Middleware;
+
+//Log.Logger = new LoggerConfiguration()
+//    .MinimumLevel.Information()
+//    .WriteTo.Console()
+//    .WriteTo.File(
+//        "Logs/log-.txt",
+//        rollingInterval: RollingInterval.Day,
+//        retainedFileCountLimit: 30)
+//    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog((ctx, lc) =>
+{
+    lc.ReadFrom.Configuration(ctx.Configuration)
+      .WriteTo.Console()
+      .WriteTo.File(
+          "Logs/log-.txt",
+          rollingInterval: RollingInterval.Day);
+});
 
+//builder.Host.UseSerilog();
 
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(typeof(CreateCategoryCommand).Assembly);
+});
+
+builder.Services.AddAutoMapper(typeof(CategoryMappingProfile));
 // ======================
 // Database
 // ======================
@@ -164,6 +194,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors(MyAllowSpecificOrigins);
+
+app.UseMiddleware<RequestLoggingMiddleware>();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthentication();
 

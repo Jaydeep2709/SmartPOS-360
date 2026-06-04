@@ -11,7 +11,14 @@ namespace SmartPOS.API.Middleware
     public class ExceptionMiddleware 
     { 
         private readonly RequestDelegate _next;
-        public ExceptionMiddleware(RequestDelegate next) { _next = next; }
+
+        private readonly ILogger<ExceptionMiddleware> _logger;
+        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger) 
+        { 
+            _next = next;
+            _logger = logger;
+
+        }
         public async Task InvokeAsync(HttpContext context) 
         { 
             try 
@@ -19,11 +26,21 @@ namespace SmartPOS.API.Middleware
                 await _next(context);
             } 
             catch (Exception ex) 
-            { 
-                context.Response.ContentType = "application/json"; 
+            {
+                _logger.LogError(ex,
+                    "Unhandled exception occurred");
+
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                var response = new { message = ex.Message };
-                await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+                context.Response.ContentType = "application/json";
+
+                var response = new
+                {
+                    StatusCode = 500,
+                    Message = "Internal Server Error"
+                };
+
+                await context.Response.WriteAsync(
+                    JsonSerializer.Serialize(response));
             } 
         }
     }
